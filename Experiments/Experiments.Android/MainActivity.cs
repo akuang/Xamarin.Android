@@ -25,6 +25,7 @@ namespace Experiments.Android
             Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
             Button callButton = FindViewById<Button>(Resource.Id.CallButton);
 			Button callHistoryButton = FindViewById<Button>(Resource.Id.CallHistoryButton);
+            Button bingSearchButton = FindViewById<Button>(Resource.Id.BingSearchButton);
 
             // Disable the "Call" button
             callButton.Enabled = false;
@@ -77,6 +78,13 @@ namespace Experiments.Android
 				intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
 				StartActivity(intent);
 			};
+
+            bingSearchButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(WebViewActivity));
+                intent.PutExtra("URL", "http://www.bing.com");
+                StartActivity(intent);
+            };
         }
     }
 }
